@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+/* Main container */
+.landing-page {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column; /* Stack background image and content vertically */
+  background-image: url('../../public/images/Desktop.svg'); /* Correct path for public folder */
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  background-attachment: fixed; /* Keep the image fixed during scroll */
+  background-repeat: no-repeat; 
+  color: white;
+  padding: 20px; 
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+/* Flex container for text and right-side image */
+.content {
+  display: flex; /* Flexbox layout */
+  flex: 1;
+ 
+  justify-content: space-between; /* Space between text and image */
+}
+
+/* Text section on the left */
+.text-section {
+  flex: 1; /* Adjusts to take up half of the available space */
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: center; */
+  padding: 20px;
+  position: relative;
+  top: 25%;
+
+  
+  max-width: 80%; /* Limits the width of the text section */
+}
+
+.text-section h1 {
+
+  font-family: "Merienda", cursive;
+  font-size: 65px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); /* horizontal, vertical, blur, color */
+
+}
+
+.text-section p {
+  margin-top: 2%;
+  font-size: 20px;
+}
+
+/* Right image section */
+.image-section {
+  flex: 1; /* Adjusts to take up half of the available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Right side image styling */
+.right-image {
+  max-width: 100%; /* Ensures the image fits within the container */
+  height: auto;
+}
+
+
+.button-group {
+  margin-top: 5%;
+  display: flex; /* Ensures buttons are placed in a row */
+  gap: 10px; /* Adds space between buttons */
+}
+
+.main-button {
+  font-family: "Crimson Text", serif;
+  font-size: 0.9rem;
+  margin-right: 10px; 
+  padding: 10px 20px;
+  border: none;
+  background-color: #607b2286;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.main-button {
+  margin-top: 10px;
+  height: 45px;
+  width: 170px;
+}
+
+
+/* Media queries to handle responsiveness */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-section {
+    text-align: center;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .image-section {
+    display: none; /* Hide the image on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .text-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+}
+
+
+.lemon-glass {
+  position: absolute;
+  top: 50%; /* Distance from the bottom */
+  left: 20px;   /* Distance from the left */
+  z-index: 10;  /* Ensures it's on top of other elements */
+}
+
+.lemon-glass img {
+  width: 125px; /* Adjust size for responsiveness */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .lemon-glass img {
+    width: 70px; /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .lemon-glass img {
+    width: 50px; /* Further adjust for very small screens */
+  }
+}

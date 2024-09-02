@@ -1,0 +1,107 @@
+/* src/components/SecondPage.css */
+.second-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 20px;
+  background-image: url('../../public/images/thirdbg.svg');
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  background-attachment: fixed; /* Keep the image fixed during scroll */
+  background-repeat: no-repeat; /* Avoid repeating the image */
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.left-image {
+  max-width: 80%;
+  height: 80%;
+  border-radius: 8px;
+}
+
+.text-container {
+  flex: 1;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.text-container h1 {
+  font-family: "Merienda", cursive;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.text-container p {
+  font-size: 1.1rem;
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  color: rgb(114, 112, 112);
+  
+  margin-bottom: 20px;
+}
+.facts-design-inside{
+  font-family: "Crimson Text", serif;
+  font-size: 1.1rem;
+}
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .second-page {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .image-container {
+    margin-bottom: 20px;
+  }
+
+  .text-container {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .text-container h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .explore-button {
+    padding: 8px 16px;
+  }
+}
+
+.facts-design {
+  display: flex;
+  gap: 15px; /* Space between the divs */
+  margin-top: 20px; /* Space above the divs */
+}
+
+.facts-design-inside {
+  flex: 1;
+  height: 100px;
+  background-color: #e0e0e0; /* Light gray background for each box */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  padding: 15px;
+}
+
+.facts-design-inside:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
