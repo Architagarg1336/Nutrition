@@ -1,0 +1,128 @@
+/* src/components/ThirdPage.css */
+.third-page {
+  min-height: 100vh;  
+  background-image: url('../../../public/images/thirdbg.svg');
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed; 
+  background-repeat: no-repeat; 
+  padding: 20px; /* Add padding to ensure content is not flush with edges */
+}
+
+.heading-thirdPage {
+  margin-bottom: 80px; 
+  font-size: 2.5rem; 
+  color: #333; 
+  text-align: center;
+  font-family: "Merienda", cursive;
+  font-weight: 800;
+}
+
+.content-thirdPage {
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center; 
+  flex-wrap: wrap; /* Allow the content to wrap on smaller screens */
+  gap: 20px; /* Add spacing between the boxes */
+}
+
+.box-drinks {
+  border-top-right-radius: 100px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 320px; 
+  background-color: white;
+  margin: 10px; /* Add margin to provide spacing between boxes */
+}
+
+.box-image {
+  width: 100%; 
+  height: auto; /* Maintain aspect ratio */
+  max-height: 350px; /* Constrain image height to original dimensions */
+  margin-bottom: 10px; 
+  border-top-right-radius: 100px;
+}
+
+.box-text {
+  font-size: 1.2rem; 
+  color: #333; 
+  /* font-weight: bold; */
+  padding-left: 10px;
+  font-family: "Merienda", cursive;
+  font-weight: 800;
+}
+
+.box-description {
+  width: 100%;
+  font-size: 1.2rem; 
+  font-family: "EB Garamond", serif;
+  font-weight: 500;
+  color: rgb(114, 112, 112);
+
+  margin-bottom: 10px; 
+  padding-left: 10px;
+}
+
+.box-button {
+  background-color: #a7cb52; 
+  font-family: "Crimson Text", serif;
+  font-size: 1rem;
+  border: none;
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  margin-bottom: 3%;
+  margin-left: 3%;
+
+}
+
+.box-button:hover {
+  background-color: #0056b3; /* Change button color on hover */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 1024px) {
+  .content-thirdPage {
+    gap: 10px; 
+  }
+
+  .box-drinks {
+    /* flex: 1 1 45%;  */
+    max-width: 100%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .content-thirdPage {
+    flex-direction: column; 
+    
+  }
+
+  .box-drinks {
+    /* flex: 1 1 100%;  */
+    max-width: 90%; 
+  }
+
+  .heading-thirdPage {
+    font-size: 1.8rem; 
+  }
+
+  .box-image {
+    max-height: 280px; 
+  }
+
+  .box-text,
+  .box-description {
+    padding-left: 5px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .box-drinks {
+    max-width: 95%; 
+  }
+
+  .heading-thirdPage {
+    font-size: 1.5rem; 
+    margin-bottom: 40px; 
+  }
+}

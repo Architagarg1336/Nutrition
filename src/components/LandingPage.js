@@ -1,6 +1,6 @@
 // src/components/LandingPage.js
 import React from 'react';
-import './LandingPage.css'; // Import component-specific CSS
+import './css/LandingPage.css'; // Import component-specific CSS
 // import '../../public/images'
 
 function LandingPage() {

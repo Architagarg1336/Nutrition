@@ -130,7 +130,7 @@
 
 
 import React, { useState } from 'react';
-import './login.css'; // Ensure this path matches your project structure
+import './css/login.css'; // Ensure this path matches your project structure
 
 function LoginPage() {
   const [rightPanelActive, setRightPanelActive] = useState(false);

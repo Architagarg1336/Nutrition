@@ -1,6 +1,6 @@
 // src/components/ThirdPage.js
 import React from 'react';
-import './ThirdPage.css'; // Import the CSS file specific to this component
+import './css/ThirdPage.css'; // Import the CSS file specific to this component
 
 function ThirdPage() {
   return (
@@ -20,7 +20,7 @@ function ThirdPage() {
           <button className="box-button">Learn More</button>
         </div>
         <div className="box-drinks">
-          <img src="/images/drink3.svg" alt="Drink 3" className="box-image" />
+          <img src="/images/drink3.png" alt="Drink 3" className="box-image" />
           <p className="box-text">Fruity Frenzy Smoothie</p>
           <p className="box-description">A delicious smoothie combining various fruits for a burst of flavor.</p>
           <button className="box-button">Learn More</button>

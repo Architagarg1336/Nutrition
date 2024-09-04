@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './BmiPage.css'; // Assuming you have your CSS in this file
+import './css/BmiPage.css'; // Assuming you have your CSS in this file
 
 function BmiPage() {
     const [age, setAge] = useState('');

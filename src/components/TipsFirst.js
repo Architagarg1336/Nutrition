@@ -1,5 +1,5 @@
 import React from 'react';
-import './TipsFirst.css';
+import './css/TipsFirst.css';
 
 const TipsFirst = () => {
   return (

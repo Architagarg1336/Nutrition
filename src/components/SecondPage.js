@@ -29,7 +29,7 @@
 // export default SecondPage;
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './SecondPage.css'; // Import the CSS file specific to this component
+import './css/SecondPage.css'; // Import the CSS file specific to this component
 
 function SecondPage() {
   const navigate = useNavigate(); // Initialize navigate function
@@ -42,7 +42,7 @@ function SecondPage() {
   return (
     <div className="second-page">
       <div className="image-container">
-        <img src="/images/Peach1.svg" alt="Left Side" className="left-image" />
+        <img src="/images/Peach1.png" alt="Left Side" className="left-image" />
       </div>
       <div className="text-container">
         <h1>
