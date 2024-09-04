@@ -1,41 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 
-/* Main container */
 .landing-page {
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
   display: flex;
-  flex-direction: column; /* Stack background image and content vertically */
-  background-image: url('../../../public/images/Desktop.svg'); /* Correct path for public folder */
-  background-size: cover; /* Cover the entire section */
-  background-position: center; /* Center the image */
-  background-attachment: fixed; /* Keep the image fixed during scroll */
+  flex-direction: column; 
+  background-image: url('../../../public/images/Desktop.svg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed; 
   background-repeat: no-repeat; 
   color: white;
   padding: 20px; 
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-/* Flex container for text and right-side image */
 .content {
-  display: flex; /* Flexbox layout */
+  display: flex; 
   flex: 1;
- 
-  justify-content: space-between; /* Space between text and image */
+  justify-content: space-between; 
 }
 
-/* Text section on the left */
 .text-section {
-  flex: 1; /* Adjusts to take up half of the available space */
-  /* display: flex;
-  flex-direction: column; */
-  /* justify-content: center; */
+  flex: 1; 
   padding: 20px;
   position: relative;
   top: 25%;
-
-  
-  max-width: 80%; /* Limits the width of the text section */
+  max-width: 80%; 
 }
 
 .text-section h1 {
@@ -43,7 +34,7 @@
   font-family: "Merienda", cursive;
   font-size: 65px;
   font-weight: 700;
-  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); /* horizontal, vertical, blur, color */
+  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); 
 
 }
 
@@ -52,25 +43,24 @@
   font-size: 20px;
 }
 
-/* Right image section */
 .image-section {
-  flex: 1; /* Adjusts to take up half of the available space */
+  flex: 1; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Right side image styling */
+
 .right-image {
-  max-width: 100%; /* Ensures the image fits within the container */
+  max-width: 100%;
   height: auto;
 }
 
 
 .button-group {
   margin-top: 5%;
-  display: flex; /* Ensures buttons are placed in a row */
-  gap: 10px; /* Adds space between buttons */
+  display: flex; 
+  gap: 10px;
 }
 
 .main-button {
@@ -92,7 +82,7 @@
 }
 
 
-/* Media queries to handle responsiveness */
+
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
@@ -106,7 +96,7 @@
   }
 
   .image-section {
-    display: none; /* Hide the image on smaller screens */
+    display: none; 
   }
 }
 
@@ -123,24 +113,24 @@
 
 .lemon-glass {
   position: absolute;
-  top: 50%; /* Distance from the bottom */
-  left: 20px;   /* Distance from the left */
-  z-index: 10;  /* Ensures it's on top of other elements */
+  top: 50%; 
+  left: 20px;  
+  z-index: 10;  
 }
 
 .lemon-glass img {
-  width: 125px; /* Adjust size for responsiveness */
+  width: 125px;
   height: auto;
 }
 
 @media (max-width: 768px) {
   .lemon-glass img {
-    width: 70px; /* Adjust for smaller screens */
+    width: 70px; 
   }
 }
 
 @media (max-width: 480px) {
   .lemon-glass img {
-    width: 50px; /* Further adjust for very small screens */
+    width: 50px; 
   }
 }

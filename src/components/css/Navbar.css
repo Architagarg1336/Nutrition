@@ -10,14 +10,9 @@
   padding:0px 35px;
 }
 
-/* .logo-container {
-  position: absolute;
-  top: 28px;
-  left: 50px;
-} */
 
 .logo {
-  height: 40px; /* Adjust as needed */
+  height: 40px; 
   width: auto;
   position: relative;
   left: 30px;
@@ -26,10 +21,7 @@
 
 .navbar {
   position: relative;
-  /* top: 20px; */
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
-  width: 100%; /* Adjusted width */
+  width: 100%; 
   max-width: 100%;
   transition: all 0.3s ease-in-out;
 }
@@ -73,18 +65,12 @@
   color: white;
 }
 
-
-
 .login-button {
   background-color: #9ddb6ea9;
   color: white;
-  padding: 17px 50px; /* Increase padding for larger button */
-  /* position: absolute; */
-  /* height: 150px; */
-  /* top: 43px;
-  right: 60px; */
-  border-radius: 20px; /* Adjust border radius for a rounder button */
-  font-size: 1.2rem;    /* Increase font size */
+  padding: 17px 50px; 
+  border-radius: 20px; 
+  font-size: 1.2rem;   
   text-decoration: none;
   transition: background-color 0.3s;
 }

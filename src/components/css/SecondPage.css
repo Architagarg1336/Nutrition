@@ -1,4 +1,4 @@
-/* src/components/SecondPage.css */
+
 .second-page {
   display: flex;
   align-items: center;
@@ -6,10 +6,10 @@
   height: 100vh;
   padding: 20px;
   background-image: url('../../../public/images/thirdbg.svg');
-  background-size: cover; /* Cover the entire section */
-  background-position: center; /* Center the image */
-  background-attachment: fixed; /* Keep the image fixed during scroll */
-  background-repeat: no-repeat; /* Avoid repeating the image */
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed; 
+  background-repeat: no-repeat; 
 }
 
 .image-container {
@@ -55,7 +55,6 @@
 }
 
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
   .second-page {
     flex-direction: column;
@@ -88,14 +87,14 @@
 
 .facts-design {
   display: flex;
-  gap: 15px; /* Space between the divs */
-  margin-top: 20px; /* Space above the divs */
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .facts-design-inside {
   flex: 1;
   height: 100px;
-  background-color: #e0e0e0; /* Light gray background for each box */
+  background-color: #e0e0e0;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -103,5 +102,5 @@
 }
 
 .facts-design-inside:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  transform: scale(1.05);
 }
