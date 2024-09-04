@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-<<<<<<< HEAD
 .landing-page {
   height: 100vh;
   display: flex;
@@ -9,17 +8,6 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-=======
-
-.landing-page {
-  height: 100vh; 
-  display: flex;
-  flex-direction: column; 
-  background-image: url('../../../public/images/Desktop.svg'); 
-  background-size: cover; 
-  background-position: center; 
-  background-attachment: fixed; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   background-repeat: no-repeat; 
   color: white;
   padding: 20px; 
@@ -27,7 +15,6 @@
 }
 
 .content {
-<<<<<<< HEAD
   display: flex;
   flex: 1;
   justify-content: space-between;
@@ -39,31 +26,13 @@
   position: relative;
   top: 25%;
   max-width: 80%;
-=======
-  display: flex; 
-  flex: 1;
-  justify-content: space-between; 
-}
-
-.text-section {
-  flex: 1; 
-  padding: 20px;
-  position: relative;
-  top: 25%;
-  max-width: 80%; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
 }
 
 .text-section h1 {
   font-family: "Merienda", cursive;
   font-size: 65px;
   font-weight: 700;
-<<<<<<< HEAD
   text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5);
-=======
-  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); 
-
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
 }
 
 .text-section p {
@@ -72,20 +41,12 @@
 }
 
 .image-section {
-<<<<<<< HEAD
   flex: 1;
-=======
-  flex: 1; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
 .right-image {
   max-width: 100%;
   height: auto;
@@ -93,11 +54,7 @@
 
 .button-group {
   margin-top: 5%;
-<<<<<<< HEAD
   display: flex;
-=======
-  display: flex; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   gap: 10px;
 }
 
@@ -256,11 +213,6 @@
   width: 300px;
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
@@ -274,11 +226,7 @@
   }
 
   .image-section {
-<<<<<<< HEAD
     display: none;
-=======
-    display: none; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   }
 }
 
@@ -294,13 +242,8 @@
 
 .lemon-glass {
   position: absolute;
-<<<<<<< HEAD
   top: 50%;
   left: 20px;   
-=======
-  top: 50%; 
-  left: 20px;  
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   z-index: 10;  
 }
 
@@ -311,20 +254,12 @@
 
 @media (max-width: 768px) {
   .lemon-glass img {
-<<<<<<< HEAD
     width: 70px;
-=======
-    width: 70px; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   }
 }
 
 @media (max-width: 480px) {
   .lemon-glass img {
-<<<<<<< HEAD
     width: 50px;
-=======
-    width: 50px; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   }
 }
