@@ -1,50 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-
-/* Main container */
 .landing-page {
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   display: flex;
-  flex-direction: column; /* Stack background image and content vertically */
-  background-image: url('../../../public/images/Desktop.svg'); /* Correct path for public folder */
-  background-size: cover; /* Cover the entire section */
-  background-position: center; /* Center the image */
-  background-attachment: fixed; /* Keep the image fixed during scroll */
+  flex-direction: column;
+  background-image: url('../../../public/images/Desktop.svg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   background-repeat: no-repeat; 
   color: white;
   padding: 20px; 
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-/* Flex container for text and right-side image */
 .content {
-  display: flex; /* Flexbox layout */
+  display: flex;
   flex: 1;
- 
-  justify-content: space-between; /* Space between text and image */
+  justify-content: space-between;
 }
 
-/* Text section on the left */
 .text-section {
-  flex: 1; /* Adjusts to take up half of the available space */
-  /* display: flex;
-  flex-direction: column; */
-  /* justify-content: center; */
+  flex: 1;
   padding: 20px;
   position: relative;
   top: 25%;
-
-  
-  max-width: 80%; /* Limits the width of the text section */
+  max-width: 80%;
 }
 
 .text-section h1 {
-
   font-family: "Merienda", cursive;
   font-size: 65px;
   font-weight: 700;
-  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); /* horizontal, vertical, blur, color */
-
+  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5);
 }
 
 .text-section p {
@@ -52,26 +40,163 @@
   font-size: 20px;
 }
 
-/* Right image section */
 .image-section {
-  flex: 1; /* Adjusts to take up half of the available space */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Right side image styling */
 .right-image {
-  max-width: 100%; /* Ensures the image fits within the container */
+  max-width: 100%;
   height: auto;
 }
 
-
 .button-group {
   margin-top: 5%;
-  display: flex; /* Ensures buttons are placed in a row */
-  gap: 10px; /* Adds space between buttons */
+  display: flex;
+  gap: 10px;
 }
+
+.landing-page-slogan {
+  color: green;
+  font-family: "Merienda", cursive;
+  font-size: 65px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); 
+}
+
+
+
+
+
+
+
+
+
+/*********************************************************************************************************************************/
+/* Button Styles */
+.customButton {
+  display: flex;
+  justify-content: space-between; /* Adjusted to handle text container and arrow icon */
+  align-items: center;
+  padding: 0.5em;
+  background-color: rgb(77, 159, 67);
+  cursor: pointer;
+  box-shadow: 4px 6px 0px black;
+  border: 4px solid;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  z-index: 100;
+  transition: box-shadow 250ms, transform 250ms, filter 50ms;
+}
+
+.customButton:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 3px 0px black;
+}
+
+.customButton:active {
+  filter: saturate(0.75);
+}
+
+.customButton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(89, 135, 82);
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform 250ms;
+}
+
+.customButton:hover::after {
+  transform: translateX(100%);
+}
+
+/* Text Container Styles */
+.textContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.textContainer span {
+  position: relative;
+  transition: opacity 250ms, transform 250ms;
+}
+
+.textContainer .feeling {
+  opacity: 1; /* Visible by default */
+  transform: translateX(0);
+}
+
+.textContainer .Customize {
+  opacity: 0; /* Hidden by default */
+  transform: translateX(100%); /* Initially off-screen */
+}
+
+.customButton:hover .textContainer .feeling {
+  opacity: 0; /* Fade out on hover */
+  transform: translateX(-100%); /* Move off-screen */
+}
+
+.customButton:hover .textContainer .Customize {
+  opacity: 1; /* Fade in on hover */
+  transform: translateX(0); /* Move into view */
+}
+
+/* Arrow Icon Container Styles */
+.arrowIconContainer {
+  padding: 1em;
+  margin-inline-end: 1em;
+  border: 4px solid;
+  border-radius: 50%;
+  background-color: rgb(54, 110, 61);
+  position: relative;
+  overflow: hidden;
+  transition: transform 250ms, background-color 250ms;
+  z-index: 100;
+}
+
+.arrowIconContainer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: rgba(111, 214, 99, 0.532);
+  transform: translateX(-100%);
+  z-index: -1;
+  transition: transform 250ms ease-in-out;
+}
+
+.customButton:hover .arrowIconContainer::after {
+  transform: translateX(0);
+}
+
+.customButton:hover .arrowIconContainer {
+  transform: translateX(5px);
+}
+
+.customButton:active .arrowIconContainer {
+  transform: translateX(8px);
+}
+
+.arrowIconContainer svg {
+  vertical-align: middle;
+}
+
+
+/*********************************************************************************************************************************/
+
+
+
+
+
 
 .main-button {
   font-family: "Crimson Text", serif;
@@ -83,16 +208,11 @@
   color: white;
   cursor: pointer;
   border-radius: 5px;
-}
-
-.main-button {
   margin-top: 10px;
-  height: 45px;
-  width: 170px;
+  height: 55px;
+  width: 300px;
 }
 
-
-/* Media queries to handle responsiveness */
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
@@ -106,7 +226,7 @@
   }
 
   .image-section {
-    display: none; /* Hide the image on smaller screens */
+    display: none;
   }
 }
 
@@ -120,27 +240,26 @@
   }
 }
 
-
 .lemon-glass {
   position: absolute;
-  top: 50%; /* Distance from the bottom */
-  left: 20px;   /* Distance from the left */
-  z-index: 10;  /* Ensures it's on top of other elements */
+  top: 50%;
+  left: 20px;   
+  z-index: 10;  
 }
 
 .lemon-glass img {
-  width: 125px; /* Adjust size for responsiveness */
+  width: 125px;
   height: auto;
 }
 
 @media (max-width: 768px) {
   .lemon-glass img {
-    width: 70px; /* Adjust for smaller screens */
+    width: 70px;
   }
 }
 
 @media (max-width: 480px) {
   .lemon-glass img {
-    width: 50px; /* Further adjust for very small screens */
+    width: 50px;
   }
 }
