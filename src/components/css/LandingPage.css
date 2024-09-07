@@ -57,6 +57,10 @@
   display: flex;
   gap: 10px;
 }
+.button-group button{
+  color: black;
+  position: absolute;
+}
 
 .landing-page-slogan {
   color: green;
@@ -74,144 +78,12 @@
 
 
 
-/*********************************************************************************************************************************/
-/* Button Styles */
-.customButton {
-  display: flex;
-  justify-content: space-between; /* Adjusted to handle text container and arrow icon */
-  align-items: center;
-  padding: 0.5em;
-  background-color: rgb(77, 159, 67);
-  cursor: pointer;
-  box-shadow: 4px 6px 0px black;
-  border: 4px solid;
-  border-radius: 15px;
-  position: relative;
-  overflow: hidden;
-  z-index: 100;
-  transition: box-shadow 250ms, transform 250ms, filter 50ms;
-}
 
-.customButton:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 3px 0px black;
-}
 
-.customButton:active {
-  filter: saturate(0.75);
-}
-
-.customButton::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgb(89, 135, 82);
-  z-index: -1;
-  transform: translateX(-100%);
-  transition: transform 250ms;
-}
-
-.customButton:hover::after {
-  transform: translateX(100%);
-}
-
-/* Text Container Styles */
-.textContainer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  font-size: 1.8rem;
-  font-weight: 600;
-  overflow: hidden;
-}
-
-.textContainer span {
-  position: relative;
-  transition: opacity 250ms, transform 250ms;
-}
-
-.textContainer .feeling {
-  opacity: 1; /* Visible by default */
-  transform: translateX(0);
-}
-
-.textContainer .Customize {
-  opacity: 0; /* Hidden by default */
-  transform: translateX(100%); /* Initially off-screen */
-}
-
-.customButton:hover .textContainer .feeling {
-  opacity: 0; /* Fade out on hover */
-  transform: translateX(-100%); /* Move off-screen */
-}
-
-.customButton:hover .textContainer .Customize {
-  opacity: 1; /* Fade in on hover */
-  transform: translateX(0); /* Move into view */
-}
-
-/* Arrow Icon Container Styles */
-.arrowIconContainer {
-  padding: 1em;
-  margin-inline-end: 1em;
-  border: 4px solid;
-  border-radius: 50%;
-  background-color: rgb(54, 110, 61);
-  position: relative;
-  overflow: hidden;
-  transition: transform 250ms, background-color 250ms;
-  z-index: 100;
-}
-
-.arrowIconContainer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background-color: rgba(111, 214, 99, 0.532);
-  transform: translateX(-100%);
-  z-index: -1;
-  transition: transform 250ms ease-in-out;
-}
-
-.customButton:hover .arrowIconContainer::after {
-  transform: translateX(0);
-}
-
-.customButton:hover .arrowIconContainer {
-  transform: translateX(5px);
-}
-
-.customButton:active .arrowIconContainer {
-  transform: translateX(8px);
-}
-
-.arrowIconContainer svg {
-  vertical-align: middle;
-}
 
 
 /*********************************************************************************************************************************/
 
-
-
-
-
-
-.main-button {
-  font-family: "Crimson Text", serif;
-  font-size: 0.9rem;
-  margin-right: 10px; 
-  padding: 10px 20px;
-  border: none;
-  background-color: #607b2286;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-  height: 55px;
-  width: 300px;
-}
 
 @media (max-width: 768px) {
   .content {
