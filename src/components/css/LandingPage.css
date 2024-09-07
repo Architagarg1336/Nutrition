@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-<<<<<<< HEAD
 .landing-page {
   height: 100vh;
   display: flex;
@@ -9,83 +8,36 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-=======
-
-.landing-page {
-  height: 100vh; 
-  display: flex;
-  flex-direction: column; 
-  background-image: url('../../../public/images/Desktop.svg'); 
-  background-size: cover; 
-  background-position: center; 
-  background-attachment: fixed; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   background-repeat: no-repeat; 
   color: white;
   padding: 20px; 
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .content {
-<<<<<<< HEAD
   display: flex;
   flex: 1;
   justify-content: space-between;
 }
+.text-section h1{
+  font-family: "Merienda" , cursive;
+}
 
 .text-section {
   flex: 1;
   padding: 20px;
   position: relative;
   top: 25%;
-  max-width: 80%;
-=======
-  display: flex; 
-  flex: 1;
-  justify-content: space-between; 
-}
-
-.text-section {
-  flex: 1; 
-  padding: 20px;
-  position: relative;
-  top: 25%;
-  max-width: 80%; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
-}
-
-.text-section h1 {
-  font-family: "Merienda", cursive;
-  font-size: 65px;
-  font-weight: 700;
-<<<<<<< HEAD
-  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5);
-=======
-  text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); 
-
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
-}
-
-.text-section p {
-  margin-top: 2%;
-  font-size: 20px;
+  max-width: 90%;
 }
 
 .image-section {
-<<<<<<< HEAD
   flex: 1;
-=======
-  flex: 1; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
 .right-image {
   max-width: 100%;
   height: auto;
@@ -93,154 +45,190 @@
 
 .button-group {
   margin-top: 5%;
-<<<<<<< HEAD
   display: flex;
-=======
-  display: flex; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   gap: 10px;
 }
 
 .landing-page-slogan {
   color: green;
   font-family: "Merienda", cursive;
-  font-size: 65px;
+  font-size: 85px; /* Increased font size for hero text */
   font-weight: 700;
   text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); 
 }
 
+/* Typewriter Effect Styles */
+.typewriter-container span {
+  font-family: "Merienda" , cursive;
+  font-size: 4rem; /* Adjust size to match larger hero text */
+  display: inline-block;
+  font-weight: 700;
+  opacity: 0;
+}
+
+.typewriter-container .bg-blue-500 {
+  margin-left: 4px;
+}
 
 
 
 
+/* Add these styles to your existing stylesheet */
+
+.font-sans {
+  font-family: sans-serif;
+}
+
+.group {
+  display: inline-flex;
+}
+
+.group:hover .rotate-90 {
+  transform: rotate(90deg);
+}
+
+.group-hover\:rotate-90:hover {
+  transform: rotate(90deg);
+}
+
+.group-hover\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+
+.group-hover\:border-none:hover {
+  border: none;
+}
+
+.group-hover\:fill-gray-800:hover {
+  fill: #4b5563;
+}
+
+.before\:absolute::before {
+  position: absolute;
+}
+
+.before\:w-full::before {
+  width: 100%;
+}
+
+.before\:transition-all::before {
+  transition: all 0.7s;
+}
+
+.before\:duration-700::before {
+  transition-duration: 0.7s;
+}
+
+.before\:hover\:w-full:hover::before {
+  width: 100%;
+}
+
+.before\:rounded-full::before {
+  border-radius: 9999px;
+}
+
+.before\:bg-emerald-500::before {
+  background-color: #10b981;
+}
+
+.before\:hover\:scale-150:hover::before {
+  transform: scale(1.5);
+}
+
+.before\:hover\:duration-700:hover::before {
+  transition-duration: 0.7s;
+}
+
+.relative {
+  position: relative;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.bg-gray-50 {
+  background-color: #f9fafb;
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(6px);
+}
+
+.shadow-xl {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hover\:text-gray-50:hover {
+  color: #f9fafb;
+}
+
+.group-hover\:rotate-90:hover {
+  transform: rotate(90deg);
+}
+
+.group-hover\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+
+.text-gray-50 {
+  color: #f9fafb;
+}
+
+.border-gray-50 {
+  border-color: #f9fafb;
+}
+
+.group-hover\:fill-gray-800:hover {
+  fill: #4b5563;
+}
+
+.fill-gray-800 {
+  fill: #4b5563;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.rotate-45 {
+  transform: rotate(45deg);
+}
 
 
 
 
-/*********************************************************************************************************************************/
 /* Button Styles */
-.customButton {
-  display: flex;
-  justify-content: space-between; /* Adjusted to handle text container and arrow icon */
-  align-items: center;
-  padding: 0.5em;
-  background-color: rgb(77, 159, 67);
-  cursor: pointer;
-  box-shadow: 4px 6px 0px black;
-  border: 4px solid;
-  border-radius: 15px;
-  position: relative;
-  overflow: hidden;
-  z-index: 100;
-  transition: box-shadow 250ms, transform 250ms, filter 50ms;
-}
-
-.customButton:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 3px 0px black;
-}
-
-.customButton:active {
-  filter: saturate(0.75);
-}
-
-.customButton::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgb(89, 135, 82);
-  z-index: -1;
-  transform: translateX(-100%);
-  transition: transform 250ms;
-}
-
-.customButton:hover::after {
-  transform: translateX(100%);
-}
-
-/* Text Container Styles */
-.textContainer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  font-size: 1.8rem;
-  font-weight: 600;
-  overflow: hidden;
-}
-
-.textContainer span {
-  position: relative;
-  transition: opacity 250ms, transform 250ms;
-}
-
-.textContainer .feeling {
-  opacity: 1; /* Visible by default */
-  transform: translateX(0);
-}
-
-.textContainer .Customize {
-  opacity: 0; /* Hidden by default */
-  transform: translateX(100%); /* Initially off-screen */
-}
-
-.customButton:hover .textContainer .feeling {
-  opacity: 0; /* Fade out on hover */
-  transform: translateX(-100%); /* Move off-screen */
-}
-
-.customButton:hover .textContainer .Customize {
-  opacity: 1; /* Fade in on hover */
-  transform: translateX(0); /* Move into view */
-}
-
-/* Arrow Icon Container Styles */
-.arrowIconContainer {
-  padding: 1em;
-  margin-inline-end: 1em;
-  border: 4px solid;
-  border-radius: 50%;
-  background-color: rgb(54, 110, 61);
-  position: relative;
-  overflow: hidden;
-  transition: transform 250ms, background-color 250ms;
-  z-index: 100;
-}
-
-.arrowIconContainer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background-color: rgba(111, 214, 99, 0.532);
-  transform: translateX(-100%);
-  z-index: -1;
-  transition: transform 250ms ease-in-out;
-}
-
-.customButton:hover .arrowIconContainer::after {
-  transform: translateX(0);
-}
-
-.customButton:hover .arrowIconContainer {
-  transform: translateX(5px);
-}
-
-.customButton:active .arrowIconContainer {
-  transform: translateX(8px);
-}
-
-.arrowIconContainer svg {
-  vertical-align: middle;
-}
-
-
-/*********************************************************************************************************************************/
-
-
-
-
-
-
 .main-button {
   font-family: "Crimson Text", serif;
   font-size: 0.9rem;
@@ -256,11 +244,6 @@
   width: 300px;
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
@@ -274,11 +257,7 @@
   }
 
   .image-section {
-<<<<<<< HEAD
     display: none;
-=======
-    display: none; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   }
 }
 
@@ -294,13 +273,8 @@
 
 .lemon-glass {
   position: absolute;
-<<<<<<< HEAD
   top: 50%;
   left: 20px;   
-=======
-  top: 50%; 
-  left: 20px;  
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   z-index: 10;  
 }
 
@@ -311,20 +285,12 @@
 
 @media (max-width: 768px) {
   .lemon-glass img {
-<<<<<<< HEAD
     width: 70px;
-=======
-    width: 70px; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   }
 }
 
 @media (max-width: 480px) {
   .lemon-glass img {
-<<<<<<< HEAD
     width: 50px;
-=======
-    width: 50px; 
->>>>>>> 419dcd23db799288d78f35685afb9132c8aa4311
   }
 }
