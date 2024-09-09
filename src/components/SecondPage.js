@@ -1,34 +1,6 @@
-// // src/components/SecondPage.js
-// import React from 'react';
-// import './SecondPage.css'; // Import the CSS file specific to this component
-
-// function SecondPage() {
-//   return (
-//     <div className="second-page">
-//       <div className="image-container">
-//         <img src="/images/Peach1.svg" alt="Left Side" className="left-image" />
-//       </div>
-//       <div className="text-container">
-//         <h1>Care about Nutrition <br/>
-//           For Your health
-//         </h1>
-//         <p>A healthy diet is essential for maintaining overall well-being, providing the body with the nutrients it needs to function optimally. It includes a balanced mix of fruits, vegetables, whole grains, lean proteins, and healthy fats, which help support energy levels, strengthen the immune system, and reduce the risk of chronic diseases. .</p>
-
-//         <div className ="facts-design">
-//           <div className='facts-design-inside' style={{ backgroundColor: '#ffbd59' }}>Include a variety of colorful fruits and vegies.</div>
-//           <div  className='facts-design-inside' style={{ backgroundColor: '#a7cb52' }}>Drink plenty of water throughout the day</div>
-//           <div  className='facts-design-inside' style={{ backgroundColor: '#9c7adf' }}> Opt for brown rice or whole wheat bread.</div>
-
-//         </div>
-       
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default SecondPage;
+// SecondPage.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import './css/SecondPage.css'; // Import the CSS file specific to this component
 
 function SecondPage() {
@@ -47,7 +19,7 @@ function SecondPage() {
       <div className="text-container">
         <h1>
           Care about Nutrition <br />
-          For Your health
+          For Your Health
         </h1>
         <p>
           A healthy diet is essential for maintaining overall well-being,
@@ -57,25 +29,26 @@ function SecondPage() {
           strengthen the immune system, and reduce the risk of chronic diseases.
         </p>
 
+        {/* Floating facts section */}
         <div className="facts-design">
           <div
             className="facts-design-inside"
             style={{ backgroundColor: '#ffbd59' }}
-            onClick={handleClick} // Add onClick event handler
+            onClick={() => handleClick("Include a variety of colorful fruits and veggies.")}
           >
             Include a variety of colorful fruits and veggies.
           </div>
           <div
             className="facts-design-inside"
             style={{ backgroundColor: '#a7cb52' }}
-            onClick={handleClick} // Add onClick event handler
+            onClick={() => handleClick("Drink plenty of water throughout the day.")}
           >
-            Drink plenty of water throughout the day
+            Drink plenty of water throughout the day.
           </div>
           <div
             className="facts-design-inside"
             style={{ backgroundColor: '#9c7adf' }}
-            onClick={handleClick} // Add onClick event handler
+            onClick={() => handleClick("Opt for brown rice or whole wheat bread.")}
           >
             Opt for brown rice or whole wheat bread.
           </div>

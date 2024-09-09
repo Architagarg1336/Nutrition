@@ -1,3 +1,4 @@
+/* SecondPage.css */
 
 .second-page {
   display: flex;
@@ -10,6 +11,7 @@
   background-position: center;
   background-attachment: fixed; 
   background-repeat: no-repeat; 
+  position: relative; /* Ensure child elements can be positioned absolutely */
 }
 
 .image-container {
@@ -31,6 +33,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  position: relative; /* Ensure floating elements are positioned relative to this container */
 }
 
 .text-container h1 {
@@ -46,14 +49,8 @@
   font-style: italic;
   font-weight: 500;
   color: rgb(114, 112, 112);
-  
   margin-bottom: 20px;
 }
-.facts-design-inside{
-  font-family: "Crimson Text", serif;
-  font-size: 1.1rem;
-}
-
 
 @media (max-width: 768px) {
   .second-page {
@@ -85,20 +82,42 @@
   }
 }
 
+
+
+/* Horizontal floating facts design */
 .facts-design {
+  position: relative; /* Positioned relative to its container */
   display: flex;
   gap: 15px;
-  margin-top: 20px;
+  flex-direction: row; /* Arrange facts horizontally */
+  height: 120px; /* Adjust height as needed */
+  overflow: hidden; /* Hide overflow to keep animation within bounds */
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(100%); /* Start from the right */
+  }
+  100% {
+    transform: translateX(-100%); /* Move to the left end */
+  }
 }
 
 .facts-design-inside {
-  flex: 1;
+  flex: 0 0 auto; /* Prevent shrinking and ensure elements take up their space */
+  width: 200px; /* Adjust width as needed */
   height: 100px;
   background-color: #e0e0e0;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Crimson Text", serif;
+  font-size: 1.1rem;
+  animation: moveLeftRight 10s linear infinite; /* Apply the animation */
 }
 
 .facts-design-inside:hover {
