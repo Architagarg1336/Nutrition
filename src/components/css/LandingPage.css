@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap');
 
 .landing-page {
   height: 100vh;
@@ -18,9 +19,6 @@
   display: flex;
   flex: 1;
   justify-content: space-between;
-}
-.text-section h1{
-  font-family: "Merienda" , cursive;
 }
 
 .text-section {
@@ -49,201 +47,97 @@
   gap: 10px;
 }
 
+.button-group button {
+  color: black;
+  position: relative;
+}
+
 .landing-page-slogan {
   color: green;
   font-family: "Merienda", cursive;
-  font-size: 85px; /* Increased font size for hero text */
+  font-size: 4.5rem;
   font-weight: 700;
   text-shadow: 2px 2px 4.5px rgba(161, 181, 145, 0.5); 
 }
 
 /* Typewriter Effect Styles */
-.typewriter-container span {
-  font-family: "Merienda" , cursive;
-  font-size: 4rem; /* Adjust size to match larger hero text */
-  display: inline-block;
+.typewriter-container {
+  font-size: 3rem;
   font-weight: 700;
+  line-height: 1.2;
+}
+
+.typewriter-container .large-text {
+  font-size: 4rem;  /* Significantly increased size */
+  font-family: "Merienda", cursive;
+  display: inline-block;
+}
+
+.typewriter-container span {
+  display: inline-block;
   opacity: 0;
 }
 
-.typewriter-container .bg-blue-500 {
-  margin-left: 4px;
-}
-
-
-
-
-/* Add these styles to your existing stylesheet */
-
-.font-sans {
-  font-family: sans-serif;
-}
-
-.group {
-  display: inline-flex;
-}
-
-.group:hover .rotate-90 {
-  transform: rotate(90deg);
-}
-
-.group-hover\:rotate-90:hover {
-  transform: rotate(90deg);
-}
-
-.group-hover\:bg-gray-50:hover {
-  background-color: #f9fafb;
-}
-
-.group-hover\:border-none:hover {
-  border: none;
-}
-
-.group-hover\:fill-gray-800:hover {
-  fill: #4b5563;
-}
-
-.before\:absolute::before {
-  position: absolute;
-}
-
-.before\:w-full::before {
-  width: 100%;
-}
-
-.before\:transition-all::before {
-  transition: all 0.7s;
-}
-
-.before\:duration-700::before {
-  transition-duration: 0.7s;
-}
-
-.before\:hover\:w-full:hover::before {
-  width: 100%;
-}
-
-.before\:rounded-full::before {
-  border-radius: 9999px;
-}
-
-.before\:bg-emerald-500::before {
-  background-color: #10b981;
-}
-
-.before\:hover\:scale-150:hover::before {
-  transform: scale(1.5);
-}
-
-.before\:hover\:duration-700:hover::before {
-  transition-duration: 0.7s;
-}
-
-.relative {
-  position: relative;
-}
-
-.z-10 {
-  z-index: 10;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.border-2 {
-  border-width: 2px;
-}
-
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-}
-
-.bg-gray-50 {
-  background-color: #f9fafb;
-}
-
-.backdrop-blur-md {
-  backdrop-filter: blur(6px);
-}
-
-.shadow-xl {
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.hover\:text-gray-50:hover {
-  color: #f9fafb;
-}
-
-.group-hover\:rotate-90:hover {
-  transform: rotate(90deg);
-}
-
-.group-hover\:bg-gray-50:hover {
-  background-color: #f9fafb;
-}
-
-.text-gray-50 {
-  color: #f9fafb;
-}
-
-.border-gray-50 {
-  border-color: #f9fafb;
-}
-
-.group-hover\:fill-gray-800:hover {
-  fill: #4b5563;
-}
-
-.fill-gray-800 {
-  fill: #4b5563;
-}
-
-.w-8 {
-  width: 2rem;
-}
-
-.h-8 {
-  height: 2rem;
-}
-
-.rotate-45 {
-  transform: rotate(45deg);
-}
-
-
-
-
-/* Button Styles */
-.main-button {
-  font-family: "Crimson Text", serif;
-  font-size: 0.9rem;
-  margin-right: 10px; 
+.landing-page-button {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
   padding: 10px 20px;
+  background-color: white;
+  color: black;
   border: none;
-  background-color: #607b2286;
-  color: white;
+  border-radius: 25px;
   cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-  height: 55px;
-  width: 300px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+.landing-page-button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.landing-page-button-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+}
+
+.landing-page-button:hover .landing-page-button-icon {
+  transform: rotate(90deg);
+}
+
+.landing-page-button:hover .landing-page-button-icon path {
+  fill: white;
+}
+
+.lemon-glass {
+  position: absolute;
+  top: 50%;
+  left: 20px;   
+  z-index: 10;  
+}
+
+.lemon-glass img {
+  width: 125px;
+  height: auto;
+}
+
+/* Ensure no cursor is visible */
+.typewriter-container::after {
+  content: none !important;
+}
+
+.typewriter-container *::after {
+  content: none !important;
+}
+
+.typewriter-container {
+  caret-color: transparent;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
@@ -259,8 +153,45 @@
   .image-section {
     display: none;
   }
+
+  .lemon-glass img {
+    width: 70px;
+  }
+
+  .typewriter-container {
+    font-size: 2.5rem;
+  }
+
+  .typewriter-container .large-text {
+    font-size: 5rem;  /* Adjusted for smaller screens */
+  }
+
+  .landing-page-slogan {
+    font-size: 60px;
+  }
 }
 
+@media (max-width: 480px) {
+  .button-group {
+    flex-direction: column;
+  }
+
+  .lemon-glass img {
+    width: 50px;
+  }
+
+  .typewriter-container {
+    font-size: 2rem;
+  }
+
+  .typewriter-container .large-text {
+    font-size: 3rem;  /* Further adjusted for mobile screens */
+  }
+
+  .landing-page-slogan {
+    font-size: 40px;
+  }
+}
 @media (max-width: 480px) {
   .text-section h1 {
     font-size: 1.8rem;
@@ -269,28 +200,16 @@
   .button-group {
     flex-direction: column;
   }
-}
 
-.lemon-glass {
-  position: absolute;
-  top: 50%;
-  left: 20px;   
-  z-index: 10;  
-}
-
-.lemon-glass img {
-  width: 125px;
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .lemon-glass img {
-    width: 70px;
-  }
-}
-
-@media (max-width: 480px) {
   .lemon-glass img {
     width: 50px;
+  }
+
+  .typewriter-container {
+    font-size: 3rem;  /* Increased from 2rem to 3rem */
+  }
+
+  .landing-page-slogan {
+    font-size: 40px;
   }
 }
