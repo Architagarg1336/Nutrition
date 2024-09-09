@@ -1,19 +1,89 @@
-// src/components/LandingPage.js
-import React from 'react';
-import './css/LandingPage.css'; // Import component-specific CSS
-// import '../../public/images'
+import React, { useEffect } from "react";
+import { motion, stagger, useAnimate, useInView } from "framer-motion";
+import "./css/LandingPage.css";
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
+
+export const TypewriterEffect = ({ words, className }) => {
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope);
+
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        "span",
+        {
+          display: "inline-block",
+          opacity: 1,
+        },
+        {
+          duration: 0.3,
+          delay: stagger(0.1),
+          ease: "easeInOut",
+        }
+      );
+    }
+  }, [isInView, animate]);
+
+  const renderWords = () => {
+    return (
+      <motion.div ref={scope} className="inline-block">
+        {words.map((line, lineIdx) => (
+          <div key={`line-${lineIdx}`} className="block">
+            {line.map((word, wordIdx) => (
+              <React.Fragment key={`word-${lineIdx}-${wordIdx}`}>
+                {word.text.split("").map((char, charIdx) => (
+                  <motion.span
+                    key={`char-${lineIdx}-${wordIdx}-${charIdx}`}
+                    className={cn(`text-white opacity-0`, word.className)}
+                    style={{ marginRight: "0.05em" }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+                {wordIdx < line.length - 1 && (
+                  <span style={{ marginRight: "2.1em" }}></span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        ))}
+      </motion.div>
+    );
+  };
+
+  return (
+    <div className={cn("typewriter-container", className)}>
+      {renderWords()}
+    </div>
+  );
+};
 
 function LandingPage() {
+  const words = [
+    [
+      { text: "We", className: "large-text" },
+      { text: "care", className: "large-text" },
+      { text: "about", className: "large-text" },
+    ],
+    [
+      { text: "your", className: "large-text" },
+      { text: "Health", className: "landing-page-slogan" },
+    ],
+  ];
+
   return (
     <div className="landing-page">
       <div className="content">
         <div className="text-section">
-          <h1>We care about<br/>your <span className='landing-page-slogan'> Health</span>. 
-
-          </h1>
-          
-          <div className="button-group">
-      <button
+          <TypewriterEffect words={words} className="landing-page-typewriter" />
+          <div className="button-group landing-page-button-group">
+            <div>
+            <button
         className="font-sans flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-green-700 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group"
         type="submit"
       >
@@ -29,15 +99,14 @@ function LandingPage() {
           ></path>
         </svg>
       </button>
-    </div>
-          <div className = 'lemon-glass'>
-            <img src = '/images/lemonGlass.svg' classname = 'lemon-glass-image-left'/>
+            </div>
+          </div>
+          <div className="lemon-glass">
+            <img src="/images/lemonGlass.svg" className="lemon-glass-image-left" alt="Lemon Glass" />
           </div>
         </div>
         <div className="image-section">
-          {/* You can add an image here */}
           <img src="/images/FinalPlate.svg" alt="Right Side" className="right-image" />
-          
         </div>
       </div>
     </div>
