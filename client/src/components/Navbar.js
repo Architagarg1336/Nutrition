@@ -4,6 +4,7 @@ import './css/Navbar.css';
 
 function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,24 +22,31 @@ function Navbar() {
     top: `${Math.max(4, 8 - scrollPosition / 4)}px`,
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="header">
-      <div className="logo-container">
+      <Link to="/">
+        <img src="./images/logo-no-background.svg" alt="Logo" className="logo" />
+      </Link>
+      <div className="hamburger" onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <nav className="navbar" style={navbarStyle}>
+      <nav className={`navbar ${isMenuOpen ? 'active' : ''}`} style={navbarStyle}>
         <div className="navbar-container">
           <ul className="nav-links">
-        <img src="./images/logo-no-background.svg" alt="Logo" className="logo" />
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/services">Services</Link></li>
             <li><Link to="/diet-plan">Diet-Plan</Link></li>
-              <li><Link to="/login" className="login-button">Join Us</Link></li>
-
+            <li><Link to="/login" className="login-button">Join Us</Link></li>
           </ul>
         </div>
       </nav>
-
     </header>
   );
 }

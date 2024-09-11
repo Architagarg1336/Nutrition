@@ -68,7 +68,7 @@
 }
 
 .typewriter-container .large-text {
-  font-size: 4rem;  /* Significantly increased size */
+  font-size: 4rem;
   font-family: "Merienda", cursive;
   display: inline-block;
 }
@@ -138,46 +138,63 @@
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .text-section {
-    text-align: center;
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .image-section {
-    display: none;
-  }
-
-  .lemon-glass img {
-    width: 70px;
-  }
-
+@media (max-width: 1200px) {
   .typewriter-container {
     font-size: 2.5rem;
   }
 
   .typewriter-container .large-text {
-    font-size: 5rem;  /* Adjusted for smaller screens */
+    font-size: 3.5rem;
   }
 
   .landing-page-slogan {
-    font-size: 60px;
+    font-size: 4rem;
   }
 }
 
-@media (max-width: 480px) {
-  .button-group {
-    flex-direction: column;
+@media (max-width: 992px) {
+  .typewriter-container {
+    font-size: 2.2rem;
+  }
+
+  .typewriter-container .large-text {
+    font-size: 3rem;
+  }
+
+  .landing-page-slogan {
+    font-size: 3.5rem;
   }
 
   .lemon-glass img {
-    width: 50px;
+    width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-page {
+    justify-content: center;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .text-section {
+    text-align: center;
+    max-width: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .image-section {
+    display: none;
   }
 
   .typewriter-container {
@@ -185,31 +202,74 @@
   }
 
   .typewriter-container .large-text {
-    font-size: 3rem;  /* Further adjusted for mobile screens */
+    font-size: 2.5rem;
   }
 
   .landing-page-slogan {
-    font-size: 40px;
+    font-size: 3rem;
+  }
+
+  .lemon-glass img {
+    width: 80px;
+  }
+
+  .button-group {
+    margin-top: 40px;  /* Increased gap between text and button */
   }
 }
-@media (max-width: 480px) {
-  .text-section h1 {
+
+@media (max-width: 576px) {
+  .typewriter-container {
     font-size: 1.8rem;
+  }
+
+  .typewriter-container .large-text {
+    font-size: 2.2rem;
+  }
+
+  .landing-page-slogan {
+    font-size: 2.5rem;
   }
 
   .button-group {
     flex-direction: column;
+    margin-top: 30px;  
+  }
+
+  .lemon-glass {
+    bottom: 20px;
+    left: 20px;
+    top: auto;
+  }
+
+  .lemon-glass img {
+    width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .typewriter-container {
+    font-size: 1.5rem;
+  }
+
+  .typewriter-container .large-text {
+    font-size: 1.8rem;
+  }
+
+  .landing-page-slogan {
+    font-size: 2rem;
   }
 
   .lemon-glass img {
     width: 50px;
   }
 
-  .typewriter-container {
-    font-size: 3rem;  /* Increased from 2rem to 3rem */
+  .landing-page-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
 
-  .landing-page-slogan {
-    font-size: 40px;
+  .button-group {
+    margin-top: 25px;  
   }
 }
