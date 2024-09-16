@@ -196,7 +196,7 @@ function BmiPage() {
                 )}
             </div>
             <div className="bmi-checklist">
-                <img src="./images/newBmiRange 1.svg" alt="BMI Range" />
+                <img src="./images/newBmiRange 1 1.png" alt="BMI Range" />
             </div>
         </div>
     );

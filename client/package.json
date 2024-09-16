@@ -20,6 +20,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
     "lucide-react": "^0.439.0",
+    "mongoose": "^8.6.2",
     "my-first-react-app": "file:",
     "postcss": "^8.4.45",
     "process": "^0.11.10",
