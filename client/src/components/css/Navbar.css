@@ -31,6 +31,7 @@
   border-radius: 50px;
   padding: 8px 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 2%;
 }
 
 .nav-links {
@@ -200,3 +201,139 @@
     font-size: 0.8rem;
   }
 }
+
+
+
+
+
+/* Add these styles to your existing Navbar.css */
+/* Existing styles */
+.sidebar-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  color: #333;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #ffffff;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: 1px solid #e0e0e0;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  font-family: "Merienda", cursive;
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  padding: 5px;
+}
+
+.sidebar-links {
+  list-style-type: none;
+  padding: 20px;
+  margin: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 20px;
+}
+
+.sidebar-links span {
+  font-size: 20px;
+}
+
+.sidebar-links a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-size: 38px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-links a:hover {
+  background-color: #607b2286;
+  color: #fbfdff;
+}
+
+.sidebar-links a svg {
+  margin-right: 10px;
+}
+
+.close-sidebar:hover {
+  color: #e74c3c;
+}
+
+/* New styles for the More button */
+.nav-links .more-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  padding: 10px 15px;
+  transition: color 0.3s ease, background-color 0.2s ease;
+}
+
+.nav-links .more-button:hover {
+  color: #fbfdff;
+  background-color: #607b2286;
+}
+
+.nav-links .more-button svg {
+  margin-left: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nav-links .more-button {
+    display: none;
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+

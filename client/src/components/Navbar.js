@@ -1,10 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './css/Navbar.css';
+import { Menu, X, UserPlus, User, History, LogOut } from 'lucide-react';
+
+function Sidebar({ isOpen, toggleSidebar }) {
+  return (
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+      <div className="sidebar-header">
+        <h2 className="sidebar-title">Nourify</h2>
+        <button className="close-sidebar" onClick={toggleSidebar}>
+          <X size={24} />
+        </button>
+      </div>
+      <ul className="sidebar-links">
+        <li>
+          <Link to="/login" onClick={toggleSidebar}>
+            <UserPlus size={20} />
+            <span>Join Us</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/profile" onClick={toggleSidebar}>
+            <User size={20} />
+            <span>Profile</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/history" onClick={toggleSidebar}>
+            <History size={20} />
+            <span>History</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/logout" onClick={toggleSidebar}>
+            <LogOut size={20} />
+            <span>Logout</span>
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
 
 function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,28 +67,42 @@ function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <header className="header">
-      <Link to="/">
-        <img src="./images/logo-no-background.svg" alt="Logo" className="logo" />
-      </Link>
-      <div className="hamburger" onClick={toggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav className={`navbar ${isMenuOpen ? 'active' : ''}`} style={navbarStyle}>
-        <div className="navbar-container">
-          <ul className="nav-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/services">Services</Link></li>
-            <li><Link to="/diet-plan">Diet-Plan</Link></li>
-            <li><Link to="/login" className="login-button">Join Us</Link></li>
-          </ul>
+    <>
+      <header className="header">
+        <Link to="/">
+          <img src="./images/logo-no-background.svg" alt="Logo" className="logo" />
+        </Link>
+        <div className="hamburger" onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-      </nav>
-    </header>
+        <nav className={`navbar ${isMenuOpen ? 'active' : ''}`} style={navbarStyle}>
+          <div className="navbar-container">
+            <ul className="nav-links">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/dashboard">Diet-Plan</Link></li>
+              <li>
+                <button className="more-button" onClick={toggleSidebar}>
+                  More <Menu size={18} />
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <button className="sidebar-toggle" onClick={toggleSidebar}>
+          <Menu size={24} />
+        </button>
+      </header>
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+    </>
   );
 }
 
