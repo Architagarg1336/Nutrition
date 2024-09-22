@@ -1,34 +1,4 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/*
-index.css
-@font-face {
-    font-family: 'GeistSans';
-    src: url('./app/fonts/GeistVF.woff') format('woff');
-    font-weight: 100 900;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'GeistMono';
-    src: url('./app/fonts/GeistMonoVF.woff') format('woff');
-    font-weight: 100 900;
-    font-display: swap;
-  }
-  
-  body {
-    font-family: 'GeistSans', sans-serif;
-    /* Add any other global styles here 
-  }
-  @font-face {
-    font-family: 'GeistVF';
-    src: url('./app/fonts/GeistVF.woff') format('woff');
-  }
-  
-  @font-face {
-    font-family: 'GeistMonoVF';
-    src: url('./app/fonts/GeistMonoVF.woff') format('woff');
-  }
-   */
+@import '~@fortawesome/fontawesome-free/css/all.css';

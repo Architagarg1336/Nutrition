@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 import TipsFirst from './components/TipsFirst';
 import BmiPage from './components/BmiPage';
 import Dashboard from './components/Dashboard';
+import ContactForm from './components/ContactUs';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/tips" element={<TipsFirst />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/contact" element={<ContactForm />} /> {/* Use element prop with JSX */}
+          <Route path="/profile" element={<ProfilePage />} /> {/* Use element prop with JSX */}
         </Routes>
       </div>
     </Router>
