@@ -21,7 +21,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.9.0",
     "mongoose": "^8.6.2",
-    "server": "file:"
+    "nodemailer": "^6.9.15",
+    "server": "file:",
+    "smtp": "^0.1.4"
   },
   "description": "",
   "devDependencies": {
