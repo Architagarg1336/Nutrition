@@ -242,17 +242,32 @@ Please provide the following information in a structured JSON format:
 {
   "calories": number,
   "macronutrientsWithCalories": string,
-  "mealPlan": string,
+  "mealPlan": {
+    "Day 1": {
+      "Breakfast": string,
+      "Lunch": string,
+      "Dinner": string
+    },
+    "Day 2": {
+      "Breakfast": string,
+      "Lunch": string,
+      "Dinner": string
+    },
+    "Day 3": {
+      "Breakfast": string,
+      "Lunch": string,
+      "Dinner": string
+    },
+    "Day 4": {
+      "Breakfast": string,
+      "Lunch": string,
+      "Dinner": string
+    }
+  },
   "foodsForDeficiencies": string,
   "dailyWaterIntake": string,
   "nutritionalAdvice": string
 }
-
-For the "mealPlan" field, provide a string with the following structure:
-"Day 1: Breakfast: [meal description]. Lunch: [meal description]. Dinner: [meal description].
-Day 2: Breakfast: [meal description]. Lunch: [meal description]. Dinner: [meal description].
-Day 3: Breakfast: [meal description]. Lunch: [meal description]. Dinner: [meal description].
-Day 4: Breakfast: [meal description]. Lunch: [meal description]. Dinner: [meal description]."
 
 Ensure each day's plan is unique and varied. Use new foods after refreshing or regenerating. All information should be evidence-based, tailored to the individual's needs, and vary across the 4 days. Each day should have different meals to provide variety and ensure adherence to the plan. If multiple deficiencies are provided, address each one in the plan and recommendations.`;
 
@@ -266,18 +281,19 @@ Ensure each day's plan is unique and varied. Use new foods after refreshing or r
     });
     console.log('Received response from Gemini API');
 
-    const generatedText = response.data.candidates[0].content.parts[0].text;
+    let generatedText = response.data.candidates[0].content.parts[0].text;
     console.log('Generated text:', generatedText);
 
     // Parse the response data
+    // Remove markdown code block syntax if present
+    generatedText = generatedText.replace(/```json\n?/g, '').replace(/```\n?/g, '');
     let parsedData;
     try {
       parsedData = JSON.parse(generatedText);
       console.log('Successfully parsed JSON response');
     } catch (parseError) {
       console.error('Error parsing JSON:', parseError);
-      console.log('Attempting to parse generated text manually');
-      parsedData = parseGeneratedText(generatedText);
+      return res.status(500).json({ error: 'Failed to parse the generated meal plan.' });
     }
 
     console.log('Parsed data:', parsedData);
@@ -287,41 +303,6 @@ Ensure each day's plan is unique and varied. Use new foods after refreshing or r
     res.status(500).json({ error: 'An error occurred while generating the meal plan.' });
   }
 });
-
-// Function to parse the generated text into structured data
-function parseGeneratedText(text) {
-  const result = {
-    calories: null,
-    macronutrientsWithCalories: '',
-    mealPlan: '',
-    foodsForDeficiencies: '',
-    dailyWaterIntake: '',
-    nutritionalAdvice: ''
-  };
-
-  const sections = text.split(/\n(?=\w+:)/).filter(Boolean);
-
-  sections.forEach(section => {
-    const [key, ...value] = section.split(':');
-    const normalizedKey = key.trim().toLowerCase().replace(/\s+/g, '');
-    
-    if (normalizedKey in result) {
-      if (normalizedKey === 'calories') {
-        const calorieMatch = value.join(':').match(/\d+/);
-        result[normalizedKey] = calorieMatch ? parseInt(calorieMatch[0]) : null;
-      } else {
-        result[normalizedKey] = value.join(':').trim();
-      }
-    }
-  });
-
-  // Ensure mealPlan is properly formatted
-  if (result.mealPlan) {
-    result.mealPlan = result.mealPlan.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
-  }
-
-  return result;
-}
 
 // Error handling middleware
 app.use((err, req, res, next) => {

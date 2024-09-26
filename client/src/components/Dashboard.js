@@ -21,6 +21,7 @@ const Dashboard = () => {
     try {
       const response = await axios.post('http://localhost:3001/generate-meal-plan', formData);
       setMealPlan(response.data);
+      console.log('Meal plan data:', response.data);
     } catch (error) {
       console.error('Error generating meal plan:', error);
     }
@@ -45,14 +46,6 @@ const Dashboard = () => {
     'linear-gradient(135deg, #ff9800 0%, #ffeb3b 100%)',
     'linear-gradient(135deg, #3f51b5 0%, #03a9f4 100%)'
   ];
-
-  const renderMealContent = (dayPlan, mealType) => {
-    if (!dayPlan) return 'No meal plan available';
-    const mealContent = dayPlan.split(`${mealType}:`)[1];
-    if (!mealContent) return `No ${mealType.toLowerCase()} plan available`;
-    const nextMeal = mealContent.split(new RegExp(`(Lunch:|Dinner:|Day ${parseInt(dayPlan.split(' ')[1]) + 1}:)`))[0];
-    return nextMeal.trim();
-  };
 
   return (
     <div className="min-h-screen bg-[#e8f5e9] p-8 mt-20 relative overflow-hidden w-full">
@@ -144,27 +137,23 @@ const Dashboard = () => {
 
         {mealPlan && mealPlan.mealPlan && (
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {mealPlan.mealPlan.split('Day').filter(Boolean).map((day, index) => {
-              const dayNumber = index + 1;
-              const dayPlan = `Day ${day.trim()}`;
-              return (
-                <div 
-                  key={index}
-                  className="meal-card rounded-lg p-6 text-white shadow-lg opacity-0 transform translate-y-4 transition-all duration-500 ease-out relative overflow-hidden"
-                  style={{ background: dayGradients[index % dayGradients.length] }}
-                >
-                  <div className="absolute inset-0 bg-white opacity-10 animate-wave"></div>
-                  <h2 className="text-2xl font-bold mb-4 relative z-10">Day {dayNumber}</h2>
-                  <p className="mb-2 relative z-10">Calories: {mealPlan.calories || 'N/A'}</p>
-                  <h3 className="text-xl font-semibold mb-2 relative z-10">Breakfast</h3>
-                  <p className="mb-4 relative z-10">{renderMealContent(dayPlan, 'Breakfast')}</p>
-                  <h3 className="text-xl font-semibold mb-2 relative z-10">Lunch</h3>
-                  <p className="mb-4 relative z-10">{renderMealContent(dayPlan, 'Lunch')}</p>
-                  <h3 className="text-xl font-semibold mb-2 relative z-10">Dinner</h3>
-                  <p className="relative z-10">{renderMealContent(dayPlan, 'Dinner')}</p>
-                </div>
-              );
-            })}
+            {Object.entries(mealPlan.mealPlan).map(([day, meals], index) => (
+              <div 
+                key={index}
+                className="meal-card rounded-lg p-6 text-white shadow-lg opacity-0 transform translate-y-4 transition-all duration-500 ease-out relative overflow-hidden"
+                style={{ background: dayGradients[index % dayGradients.length] }}
+              >
+                <div className="absolute inset-0 bg-white opacity-10 animate-wave"></div>
+                <h2 className="text-2xl font-bold mb-4 relative z-10">{day}</h2>
+                <p className="mb-2 relative z-10">Calories: {mealPlan.calories || 'N/A'}</p>
+                <h3 className="text-xl font-semibold mb-2 relative z-10">Breakfast</h3>
+                <p className="mb-4 relative z-10">{meals.Breakfast}</p>
+                <h3 className="text-xl font-semibold mb-2 relative z-10">Lunch</h3>
+                <p className="mb-4 relative z-10">{meals.Lunch}</p>
+                <h3 className="text-xl font-semibold mb-2 relative z-10">Dinner</h3>
+                <p className="relative z-10">{meals.Dinner}</p>
+              </div>
+            ))}
           </div>
         )}
 
