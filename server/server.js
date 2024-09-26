@@ -66,10 +66,6 @@ const sendWelcomeEmail = async (name, email) => {
 
   try {
     console.log('Attempting to send welcome email...');
-    console.log('Email configuration:', {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS ? '********' : 'Not set' // Don't log the actual password
-    });
     const info = await transporter.sendMail(mailOptions);
     console.log('Welcome email sent successfully:', info.response);
   } catch (error) {
@@ -183,18 +179,11 @@ app.post('/api/subscribe', async (req, res) => {
 });
 
 // Contact us route
-// ... (rest of your existing code)
-
-// Contact us route
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
   try {
-    // Send message to the user's email
     await sendEmailToUser(name, email, message);
-
-    // Send the contact message to the company's email
     await sendEmailToCompany(name, email, message);
-
     res.json({ message: 'Message received successfully' });
   } catch (error) {
     console.error('Contact form error:', error);
@@ -238,49 +227,36 @@ const sendEmailToCompany = async (name, email, message) => {
   await transporter.sendMail(mailOptions);
 };
 
-// ... (rest of your existing code)
-
-
 // Route to generate meal plan
 app.post('/generate-meal-plan', async (req, res) => {
   try {
     const { deficiencies, bmi, dietPreference, gender } = req.body;
     
-    const prompt = `Generate a personalized 4-day nutrition plan for a ${gender} with the following characteristics:
+    const prompt = `Generate a proper 4-day nutrition plan for a ${gender} with the following characteristics and keep in mind the weight goal according to the range of bmi:
 BMI: ${bmi}
 Diet Preference: ${dietPreference}
 Deficiencies: ${deficiencies || 'None'}
 
-Please provide the following information in a structured format. Ensure each day's plan is unique and varied and also use new food after refreshing or regenerating:
+Please provide the following information in a structured JSON format:
 
-1. Daily Calorie Needs: [Provide a specific number]
-   Macronutrient Breakdown:
-   - Protein: [X]g ([Y]% of total calories)
-   - Carbohydrates: [X]g ([Y]% of total calories)
-   - Fats: [X]g ([Y]% of total calories)
+{
+  "calories": number,
+  "macronutrientsWithCalories": string,
+  "mealPlan": string,
+  "foodsForDeficiencies": string,
+  "dailyWaterIntake": string,
+  "nutritionalAdvice": string
+}
 
-2. 4-Day Meal Plan:
-   For each day (Day 1 to Day 4), provide:
-   a. Breakfast: [Meal description] (Calories: [X], Protein: [X]g, Carbs: [X]g, Fat: [X]g)
-      Recipe: [Brief recipe or preparation instructions]
-      \n
-   b. Lunch: [Meal description] (Calories: [X], Protein: [X]g, Carbs: [X]g, Fat: [X]g)
-      Recipe: [Brief recipe or preparation instructions]
-      \n
-   c. Dinner: [Meal description] (Calories: [X], Protein: [X]g, Carbs: [X]g, Fat: [X]g)
-      Recipe: [Brief recipe or preparation instructions]
+For the "mealPlan" field, provide a string with the following structure:
+"Day 1: Breakfast: [meal description]. Lunch: [meal description]. Dinner: [meal description].
+Day 2: Breakfast: [meal description]. Lunch: [meal description]. Dinner: [meal description].
+Day 3: Breakfast: [meal description]. Lunch: [meal description]. Dinner: [meal description].
+Day 4: Breakfast: [meal description]. Lunch: [meal description]. Dinner: [meal description]."
 
-   Ensure that each day's total calories and macronutrients align with the daily needs specified in section 1.
+Ensure each day's plan is unique and varied. Use new foods after refreshing or regenerating. All information should be evidence-based, tailored to the individual's needs, and vary across the 4 days. Each day should have different meals to provide variety and ensure adherence to the plan. If multiple deficiencies are provided, address each one in the plan and recommendations.`;
 
-3. Foods for Deficiencies: [List specific foods that address the mentioned deficiencies, or state 'No specific recommendations' if no deficiencies were mentioned]
-
-4. Daily Water Intake: [Provide a specific recommendation in liters]
-
-5. Nutritional Advice: [Provide 3-5 bullet points of general nutritional advice based on the person's characteristics]
-
-Please ensure all information is evidence-based, tailored to the individual's needs, and varies across the 4 days. Each day should have different meals and snacks to provide variety and ensure adherence to the plan.`;
-
-    // Request to the external API
+    console.log('Sending request to Gemini API...');
     const response = await axios.post(GEMINI_API_ENDPOINT, {
       contents: [{ parts: [{ text: prompt }] }]
     }, {
@@ -288,12 +264,23 @@ Please ensure all information is evidence-based, tailored to the individual's ne
         'Content-Type': 'application/json'
       }
     });
+    console.log('Received response from Gemini API');
 
     const generatedText = response.data.candidates[0].content.parts[0].text;
+    console.log('Generated text:', generatedText);
 
     // Parse the response data
-    const parsedData = parseGeneratedText(generatedText);
+    let parsedData;
+    try {
+      parsedData = JSON.parse(generatedText);
+      console.log('Successfully parsed JSON response');
+    } catch (parseError) {
+      console.error('Error parsing JSON:', parseError);
+      console.log('Attempting to parse generated text manually');
+      parsedData = parseGeneratedText(generatedText);
+    }
 
+    console.log('Parsed data:', parsedData);
     res.json(parsedData);
   } catch (error) {
     console.error('Error:', error.response ? error.response.data : error.message);
@@ -303,30 +290,37 @@ Please ensure all information is evidence-based, tailored to the individual's ne
 
 // Function to parse the generated text into structured data
 function parseGeneratedText(text) {
-  const sections = text.split(/\d+\.\s/).filter(Boolean);
-  
-  const cleanText = (str) => str.replace(/[\*\n]/g, ' ').replace(/\s+/g, ' ').trim();
-
-  const macronutrientsWithCalories = cleanText(`${sections[0]} ${sections[1]}`);
-
-  const parseMealPlan = (mealPlanText) => {
-    return mealPlanText.split(/Day \d+:/).filter(Boolean).map(day => {
-      return day.split(/[a-f]\.\s/).filter(Boolean).map(meal => cleanText(meal)).join('\n');
-    }).join('\n\n');
+  const result = {
+    calories: null,
+    macronutrientsWithCalories: '',
+    mealPlan: '',
+    foodsForDeficiencies: '',
+    dailyWaterIntake: '',
+    nutritionalAdvice: ''
   };
 
-  const mealPlan = parseMealPlan(sections[2]);
-  const foodsForDeficiencies = cleanText(sections[3]);
-  const dailyWaterIntake = cleanText(sections[4]);
-  const nutritionalAdvice = cleanText(sections[5]);
+  const sections = text.split(/\n(?=\w+:)/).filter(Boolean);
 
-  return {
-    macronutrientsWithCalories,
-    mealPlan,
-    foodsForDeficiencies,
-    dailyWaterIntake,
-    nutritionalAdvice
-  };
+  sections.forEach(section => {
+    const [key, ...value] = section.split(':');
+    const normalizedKey = key.trim().toLowerCase().replace(/\s+/g, '');
+    
+    if (normalizedKey in result) {
+      if (normalizedKey === 'calories') {
+        const calorieMatch = value.join(':').match(/\d+/);
+        result[normalizedKey] = calorieMatch ? parseInt(calorieMatch[0]) : null;
+      } else {
+        result[normalizedKey] = value.join(':').trim();
+      }
+    }
+  });
+
+  // Ensure mealPlan is properly formatted
+  if (result.mealPlan) {
+    result.mealPlan = result.mealPlan.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  return result;
 }
 
 // Error handling middleware
