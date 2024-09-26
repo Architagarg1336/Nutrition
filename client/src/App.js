@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
@@ -13,10 +13,18 @@ import ContactForm from './components/ContactUs';
 import ProfilePage from './components/ProfilePage';
 
 function App() {
+  const footerRef = useRef(null); // Create a ref for the footer
+
+  const scrollToFooter = () => {
+    if (footerRef.current) {
+      footerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar scrollToFooter={scrollToFooter} />
         <Routes>
           <Route path="/" element={
             <>
@@ -24,14 +32,24 @@ function App() {
               <SecondPage />
               <ThirdPage />
               <BmiPage />
-              <Footer />
+              <div ref={footerRef}>
+                <Footer />
+              </div>
             </>
           } />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/tips" element={<TipsFirst />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/contact" element={<ContactForm />} /> {/* Use element prop with JSX */}
-          <Route path="/profile" element={<ProfilePage />} /> {/* Use element prop with JSX */}
+          <Route path="/contact" element={<ContactForm />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          {/* Add About Us route if needed */}
+          <Route path="/about" element={
+            <div>
+              <h1>About Us</h1>
+              <p>Your about us content goes here.</p>
+              <div ref={footerRef}></div> {/* Include the footer reference here as well */}
+            </div>
+          } />
         </Routes>
       </div>
     </Router>
