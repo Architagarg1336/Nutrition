@@ -5,14 +5,35 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
 const nodemailer = require('nodemailer');
-
+const path = require('path');
+const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
+
+// Ensure uploads directory exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
+
+app.use('/uploads', express.static('uploads'));
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname))
+  }
+});
+const upload = multer({ storage: storage });
+
 
 // Check for required environment variables
 const requiredEnvVars = ['MONGO_URI', 'JWT_SECRET', 'GEMINI_API_KEY', 'EMAIL_USER', 'EMAIL_PASS'];
@@ -23,6 +44,21 @@ if (missingEnvVars.length > 0) {
   process.exit(1);
 }
 
+const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) {
+    return res.status(401).json({ message: 'No token provided' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      console.error('JWT verification error:', err);
+      return res.status(403).json({ message: 'Failed to authenticate token' });
+    }
+    req.userId = decoded.userId;
+    next();
+  });
+};
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected successfully'))
@@ -35,8 +71,11 @@ mongoose.connect(process.env.MONGO_URI)
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  profileImage: { type: String },
+  lastUpdated: { type: Date, default: Date.now }
 });
+// const User = mongoose.model('User', userSchema);
 const User = mongoose.model('User', userSchema);
 
 const GEMINI_API_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`;
@@ -49,6 +88,24 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS
   }
 });
+
+// New route to get user data
+// Get user data
+app.get('/api/user', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select('-password');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json(user);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+
 
 // Function to send welcome email
 const sendWelcomeEmail = async (name, email) => {
@@ -307,7 +364,7 @@ Ensure each day's plan is unique and varied. Use new foods after refreshing or r
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ message: 'Something went wrong!' });
+  res.status(500).json({ message: 'Something went wrong!', error: err.message });
 });
 
 // Start the server

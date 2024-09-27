@@ -19,12 +19,12 @@ function Sidebar({ isOpen, toggleSidebar }) {
             <span>Join Us</span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/profile" onClick={toggleSidebar}>
             <User size={20} />
             <span>Profile</span>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/history" onClick={toggleSidebar}>
             <History size={20} />
