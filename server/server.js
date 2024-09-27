@@ -288,13 +288,24 @@ const sendEmailToCompany = async (name, email, message) => {
 app.post('/generate-meal-plan', async (req, res) => {
   try {
     const { deficiencies, bmi, dietPreference, gender } = req.body;
-    
-    const prompt = `Generate a proper 4-day nutrition plan for a ${gender} with the following characteristics and keep in mind the weight goal according to the range of bmi:
+   const prompt = `Generate a simple 4-day nutrition plan using common, easy-to-prepare Indian foods for a ${gender} with the following characteristics:
+
 BMI: ${bmi}
 Diet Preference: ${dietPreference}
 Deficiencies: ${deficiencies || 'None'}
 
-Please provide the following information in a structured JSON format:
+Please follow these guidelines:
+1. Focus on easily available and simple-to-cook Indian dishes.
+2. Strictly adhere to the diet preference (vegetarian or non-vegetarian).
+3. Include common Indian staples like dal, roti, rice, sabzi, and curd.
+4. Suggest basic Indian breakfast options like poha, upma, or paratha.
+5. Recommend simple Indian snacks like chana, fruit chaat, or roasted makhana.
+6. Keep the meal plan varied but uncomplicated.
+7. Consider the BMI and any deficiencies when suggesting portion sizes.
+
+Provide a straightforward day-by-day Indian meal plan that's easy to follow and prepare.
+
+
 
 {
   "calories": number,

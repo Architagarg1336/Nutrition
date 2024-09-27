@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './css/BmiPage.css';
 
 function BmiPage() {
@@ -13,6 +14,8 @@ function BmiPage() {
     const [bmiResult, setBmiResult] = useState('');
     const [bmiMessage, setBmiMessage] = useState('');
     const [bmiMessageColor, setBmiMessageColor] = useState('');
+
+    const navigate = useNavigate();
 
     const calculateBmi = () => {
         let heightInMeters;
@@ -61,6 +64,10 @@ function BmiPage() {
 
         setBmiMessage(message);
         setBmiMessageColor(color);
+    };
+
+    const goToDashboard = () => {
+        navigate('/dashboard');
     };
 
     return (
@@ -190,8 +197,16 @@ function BmiPage() {
                 </button>
                 {bmiResult && (
                     <div className="bmi-result" style={{ backgroundColor: bmiMessageColor }}>
-                        <p>Your BMI is: <strong>{bmiResult}</strong></p>
-                        <p>Category: <strong>{bmiMessage}</strong></p>
+                        <div>
+                            <p>Your BMI is: <strong>{bmiResult}</strong></p>
+                            <p>Category: <strong>{bmiMessage}</strong></p>
+                        </div>
+                        <button
+                            className="dashboard-button"
+                            onClick={goToDashboard}
+                        >
+                            Plan your diet
+                        </button>
                     </div>
                 )}
             </div>
