@@ -42,7 +42,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
   );
 }
 
-function Navbar() {
+function Navbar({ scrollToFooter }) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -86,7 +86,11 @@ function Navbar() {
           <div className="navbar-container">
             <ul className="nav-links">
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
+              <li>
+                <span onClick={scrollToFooter} style={{ cursor: 'pointer', fontSize: '18px' }}>
+                  About
+                </span>
+              </li>
               <li><Link to="/contact">Contact Us</Link></li>
               <li><Link to="/dashboard">Diet-Plan</Link></li>
               <li>
